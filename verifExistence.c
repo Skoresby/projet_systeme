@@ -17,7 +17,7 @@ int verifExistence(Path chemin)
 		//if(strlen(chemin.chemin)!=0)//chemin non vide
 		if(chemin.chemin!=NULL)
 		{
-			printf("tb.n=%s, c.n=%s, tb.c=%s, c.c=%s\n", tabInode[i].nom_fichier, chemin.nom, tabInode[i].chemin_absolu,  chemin.chemin);
+			//printf("tb.n=%s, c.n=%s, tb.c=%s, c.c=%s\n", tabInode[i].nom_fichier, chemin.nom, tabInode[i].chemin_absolu,  chemin.chemin);
 			if((strcmp(tabInode[i].nom_fichier, chemin.nom)==0)&&(strcmp(tabInode[i].chemin_absolu, chemin.chemin)==0))
 			{
 				ninode=i;
