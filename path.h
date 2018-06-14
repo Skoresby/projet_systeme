@@ -1,5 +1,5 @@
 #ifndef PATH_H
-#define
+#define PATH_H
 typedef struct 
 {
 	char *chemin;
