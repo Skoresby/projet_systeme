@@ -6,10 +6,10 @@
 
 VE VAR_E;
 
- char* verifType (char *objet, _Bool sudo) { //écriture de bool différente en fonction des versions
-	 char *nom, *chemin, *type;
+ int verifType (char *objet, _Bool sudo) { //écriture de bool différente en fonction des versions
+	 char *nom, *chemin;
 	 int ninode = -1;//si aucune modif alors n'existe pas
-	 int count = 0, rep = -1;
+	 int count = 0, rep = -1, type;
 	 int *corresp;
 	 
 	 corresp = (int *)malloc(VE.nbInode*(sizeof (int )));
@@ -24,13 +24,13 @@ VE VAR_E;
 	 
 	 if(nom == "")
 	 {
-		 type = "repertoire";
+		 type = 1; //repertoire
 	 }
 	 else if
 	 {
 		 for(i=0;i<VE.nbInode;i++)
 		 {
-			 if(tabInode[i].nom == nom)//choix utilisateur si plusieurs avec le même nom
+			 if(tabInode[i].nom == nom)//liste correspondances
 			 {
 				 corresp[count]=i; //ninodes correspondantes
 				 printf("%d %s\n",count, tabInode[i].chemin);
@@ -41,7 +41,7 @@ VE VAR_E;
 		 {
 			 ninode = corresp[0];
 		 }
-		 else
+		 else //plusieurs correspondances -> demande choix utilisateur
 		 {
 			 do{
 				 printf("Entrez le n° correspondant au chemin voulu\n");
@@ -67,7 +67,11 @@ VE VAR_E;
 		 }
 	 }
 	 if(ninode == -1)
-		printf("N'existe pas\n");
+	 {
+		 printf("N'existe pas\n");
+		 type = -1;
+	 }
+		
 	 else
 		type = tabInode[ninode].type;
 		
