@@ -3,34 +3,37 @@
 #include <string.h>
 #include "variable_environnement.h"
 #include "inode.h"
+#include "path.h"
 
 VE VAR_E;
 
  int verifType (char *objet, _Bool sudo) { //écriture de bool différente en fonction des versions
 	 char *nom, *chemin;
+	 Path recup;
 	 int ninode = -1;//si aucune modif alors n'existe pas
-	 int count = 0, rep = -1, type;
+	 int count = 0, rep = -1, type, i;
 	 int *corresp;
 	 
 	 corresp = (int *)malloc(VE.nbInode*(sizeof (int )));
 	 
-	 (nom, chemin) = path(objet);
+	 recup = path(objet);
 	 //(nom2, chemin2) = path(argv[2]);
 	 
-	 if(( sudo == 1) && (chemin == ""))
+	 if(( sudo == 1) && (recup.chemin == NULL))
 	 {
-		 chemin = VE.mypath;
+		 recup.chemin=(char*)malloc(strlen(VAR_E.mypath)*sizeof(char));
+		 recup.chemin = VAR_E.mypath;
 	 }
 	 
-	 if(nom == "")
+	 if(recup.nom ==NULL)
 	 {
 		 type = 1; //repertoire
 	 }
-	 else if
+	 else if(recup.chemin==NULL)//on n a pas modifié cette valeur, qui est toujours nulle
 	 {
-		 for(i=0;i<VE.nbInode;i++)
+		 for(i=0;i<VAR_E.nbInode;i++)
 		 {
-			 if(tabInode[i].nom == nom)//liste correspondances
+			 if(tabInode[i].nom == recup.nom)//liste correspondances
 			 {
 				 corresp[count]=i; //ninodes correspondantes
 				 printf("%d %s\n",count, tabInode[i].chemin);
@@ -59,7 +62,7 @@ VE VAR_E;
 	 {
 		 for(i=0;i<VE.nbInode;i++)
 		 {
-			 if((tabInode[i].nom == nom)&&(tabInode.chemin == chemin))
+			 if((tabInode[i].nom == recup.nom)&&(tabInode.chemin == recup.chemin))
 			 {
 				 ninode = i;
 				 break;
