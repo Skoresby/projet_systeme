@@ -29,20 +29,20 @@ void link(Path nom1 ,Path nom2);
     if(etat_fichier2>2)
     {
 
-         INODE[verifExistence(nom2.chemin)].lbloc = INODE[verifExistence(nom1.chemin)].lbloc;
+         INODE[verifExistence(nom2)].lbloc = INODE[verifExistence(nom1)].lbloc;
          INODE[verifExistence(nom1)].numinode_liens =(int*)realloc(INODE[verifExistence(nom1)].numinode_liens,1*sizeof(int));
-         INODE[verifExistence(nom1)].numinode_liens[ INODE[verifExistence(nom1)].nb_lien]=verifExistence(nom2.chemin);
+         INODE[verifExistence(nom1)].numinode_liens[ INODE[verifExistence(nom1)].nb_lien]=verifExistence(nom2);
          INODE[verifExistence(nom1)].nb_lien++;
 
-         if(INODE[verifExistence(nom1.chemin)].nb_lien>1)
+         if(INODE[verifExistence(nom1)].nb_lien>1)
          {
              int i=0;
-             for(i=0;i<INODE[verifExistence(nom1.chemin)].nb_lien-1;i++)
+             for(i=0;i<INODE[verifExistence(nom1)].nb_lien-1;i++)
              {
 
-                INODE[INODE[verifExistence(nom1.chemin)].numinode_liens[i]].nb_lien = INODE[verifExistence(nom1.chemin)].nb_lien;
-                INODE[INODE[verifExistence(nom1.chemin)].numinode_liens[i]].numinode_liens = (int*)realloc(INODE[INODE[verifExistence(nom1.chemin)].numinode_liens[i]].numinode_liens,1 * sizeof(int));
-                INODE[INODE[verifExistence(nom1.chemin)].numinode_liens[i]].numinode_liens[ INODE[INODE[verifExistence(nom1.chemin)].numinode_liens[i]].nb_lien]=verifExistence(nom2.chemin);
+                INODE[INODE[verifExistence(nom1)].numinode_liens[i]].nb_lien = INODE[verifExistence(nom1)].nb_lien;
+                INODE[INODE[verifExistence(nom1)].numinode_liens[i]].numinode_liens = (int*)realloc(INODE[INODE[verifExistence(nom1)].numinode_liens[i]].numinode_liens,1 * sizeof(int));
+                INODE[INODE[verifExistence(nom1)].numinode_liens[i]].numinode_liens[ INODE[INODE[verifExistence(nom1)].numinode_liens[i]].nb_lien]=verifExistence(nom2);
              }
          }
     }
