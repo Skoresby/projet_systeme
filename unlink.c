@@ -3,8 +3,7 @@
 #include "inode.h"
 #include "liste_chainee.h"
 
-extern Inode INODE[];
-extern VE ve;
+extern Inode* INODE;
 extern char** tabBlocs;
 extern L_Bloc * listeBloc;
 extern L_Bloc * listeInode;
@@ -86,48 +85,6 @@ void unlink(char *nom)
 	/*printf("inode %d supp\n", ninode);*/
 	
 	/*placement de l'i-node dans la liste chainée des ninodes non utilisés*/
-	if(listeInode==NULL)
-		listeInode=initBloc(ninode);
-	else
-		insertbloc(listeInode,ninode);
-}
-
-		
-	}
-	else//donc il faut supp l inode et les blocs
-	{
-		int numBlocs[15], i;//on a dit que chaque fichier avait au plus 15 blocs de données
-		//supp des blocs
-		recup_list_bloc(tabInode[ninode].bloc, numBlocs);
-		for(i=0; i<15; i++)
-		{
-			if(numBlocs[i]==-1)
-				break;
-			memset(tabBlocs[numBlocs[i]], 0, strlen(tabBlocs[numBlocs[i]]));
-			if(listeBloc==NULL)
-				listeBloc=initBloc(numBlocs[i]);
-			else
-				insertbloc(listeBloc, numBlocs[i]);
-		}
-	}
-	
-	//reinitialisation de l i-node (dans tous les cas)
-	tabInode[ninode].permissions=0;
-	memset(tabInode[ninode].chemin_absolu, 0, strlen(tabInode[ninode].chemin_absolu));
-	memset(tabInode[ninode].nom_fichier, 0, strlen(tabInode[ninode].nom_fichier));
-	memset(tabInode[ninode].d_last_mod, 0, strlen(tabInode[ninode].d_last_mod));
-	tabInode[ninode].version=0;
-	tabInode[ninode].type=-1;
-	tabInode[ninode].bloc=NULL;
-	tabInode[ninode].taille=0;
-	memset(tabInode[ninode].n_pro, 0, strlen(tabInode[ninode].n_pro));
-	tabInode[ninode].etat=-1;
-	tabInode[ninode].nb_lien=0;
-	tabInode[ninode].numinode_liens=NULL;
-	
-	//printf("inode %d supp\n", ninode);
-	
-	//placement de l'i-node dans la liste chainée des ninodes non utilisés
 	if(listeInode==NULL)
 		listeInode=initBloc(ninode);
 	else
