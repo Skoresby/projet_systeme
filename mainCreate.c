@@ -8,6 +8,6 @@ extern VE VAR_E;
 
 int main(int argc,char *argv[])
 {
-	int a =mycreate(argv[1],(mode_t)(argv[2]));
+	int a =mycreate(argv[1],(mode_t)(argv[2][0]));
 	return a;
 }
