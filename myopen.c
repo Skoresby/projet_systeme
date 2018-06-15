@@ -23,7 +23,7 @@ int myopen(int indice)
 int main (int argc, char **argv)
 {
 
-	int a = myopen(argv[1]);  
+	int a = myopen(atoi(argv[1]));  
 	printf("nouvel etat : %d \n",a);
 	return a;
 }
