@@ -76,6 +76,8 @@ int mycreate(char *fichier,mode_t mode)
 		memcpy(INODE[VAR_E.nbNinode-1].n_pro,propr,strlen(propr)+1);
 		INODE[VAR_E.nbNinode-1].nb_lien=1;
 	}
+	int ninodePath=verifExistence(VAR_E.mypath);
+	mywrite(ninodePath, INODE[0].nom_fichier, sizeof(INODE[0].nom_fichier));//on écrit dans le fichier du répertoire le nom du fichier créé
 	return fd;
 
 }
