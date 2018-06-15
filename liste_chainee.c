@@ -34,7 +34,7 @@ void aff_list_lbloc(L_Bloc *lbloc )
 
 void recup_list_bloc(L_Bloc* lbloc, int recup[15])
 {
-	//int recup[15];
+	/*int recup[15];*/
 	printf("lc 38\n");
 	int i=0, j;
 	if (lbloc == NULL)
@@ -53,7 +53,7 @@ void recup_list_bloc(L_Bloc* lbloc, int recup[15])
 		recup[j]=-1;
 		
 	printf("lc 54\n");
-	//return recup;
+	/*return recup;*/
 }
 
 void insertbloc(L_Bloc * lbloc,int x)
