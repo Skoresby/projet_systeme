@@ -11,3 +11,4 @@
 #include <unistd.h>
 
 int myclose(int);
+#endif
