@@ -6,7 +6,7 @@ extern char** tabBlocs;
 extern L_Bloc * listeBloc;
 extern L_Bloc * listeInode;
 
-void mywrite(int ninode,char buf [],nombre)
+void mywrite(int ninode,char buf [], int nombre)
 {
 
         if(INODE[ninode].etat==-2)
