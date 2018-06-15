@@ -4,19 +4,17 @@
 typedef struct 
 {
  int permissions;
- char chemin_absolu[100];
- char nom_fichier[30];
- char d_last_mod[10];
+ char *chemin_absolu;
+ char *nom_fichier;
+ char *d_last_mod;
  int version;
- char type;
- int mode;
- int bloc;
+ L_Bloc * lbloc;
  int taille;
- char n_pro[30];
+ char *n_pro;
  int etat;
  int nb_lien;
- char n_gr[30];
  int *numinode_liens;
+ int type;
 }Inode;
 
 #endif
