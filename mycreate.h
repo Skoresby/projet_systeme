@@ -7,6 +7,8 @@
 #include "mywrite.h"
 #include "myopen.h"
 #include "variable_environnement.h"
+#include "myclose.h"
+
 
 int mycreate(char *fichier,mode_t mode);
 
