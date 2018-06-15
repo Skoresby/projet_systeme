@@ -4,6 +4,8 @@ void ls (char *argv[])
 {
 	int ninode = -1;
 	int type = -1;
+	Path pathLs;
+	
 	if(argv[1] != NULL)/*ls avec une option*/
 	{
 		if(argv[1][0] != '-') /*ls avec option*/
@@ -23,7 +25,8 @@ void ls (char *argv[])
 						}
 						else /*ls -l sur un repertoire precis*/
 						{
-							ninode = verifExistence(argv[1]);
+							pathLs = path(argv[2], 1);
+							ninode = verifExistence(pathLs);
 							type = verifType(argv[1],0);
 							if((ninode == -1) || (type != 1))
 							{
@@ -43,7 +46,8 @@ void ls (char *argv[])
 		else /*ls sur un nom de répertoire*/
 		{
 			/*vérification exitence répertoire*/
-			ninode = verifExistence(argv[1]);
+			pathLs = path(argv[1], 1);
+			ninode = verifExistence(pathLs);
 			type = verifType(argv[1],0);
 			if((ninode == -1) || (type != 1))
 			{
@@ -66,7 +70,8 @@ void affiche_ls(char *repertoire, bool option)
 	char buffer[100] = "";
 	char contenu[30] = "";
 	int ninode, i, j = 0;
-	ninode = verifExistence(repertoire);
+	pathLs = path(repertoire, 1);
+	ninode = verifExistence(pathLs);
 	
 	myread(ninode,buffer,INODE[ninode].taille);
 	for(i=0;i<100;i++)
