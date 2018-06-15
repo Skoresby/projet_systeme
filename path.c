@@ -122,7 +122,20 @@ Path separer(char* arg)
 			countMotActuel=0;
 			memset (motActuel, 0, sizeof (motActuel));
 		}
+		else if(provenance==3)//si chemin null, on renvoie le chemin courant
+		{
+			tmp=separer(arg);
+		retour.nom=(char*)malloc(strlen(tmp.nom)*sizeof(char));
+		strcpy(retour.nom, tmp.nom);
+
+		retour.chemin=(char*)malloc((strlen(VAR_E.mypath)+strlen(tmp.chemin))*sizeof(char));
+		strcpy(retour.chemin, VAR_E.mypath);
+		strcat(retour.chemin, tmp.chemin);
+		printf("ch=%s, n=%s\n", retour.chemin, retour.nom);
+		}
 	}
+	
+	
 	strcat(chemin, motPrecedent);
 	strcat(nom, motActuel);
 	tmp.chemin=(char*)malloc(strlen(chemin)*sizeof(char));
@@ -135,77 +148,6 @@ Path separer(char* arg)
 }
 	
 	
-	//a reorganiser
-/*	
-	if(arg[strlen(arg)-1]=='/')//le dernier caractere est un slash, donc nous avons un nom de dossier
-	{
-		if((arg[0]!='/')&&(arg[0]!='.'))//si le nom de commence pas par un /, c est donc un chemin relatif, donc il faut recuperer le chemin absolu du repertoire courant
-		{
-			
-			int longueur=(strlen(arg)+strlen(ve.mypath));
-			retour->chemin=(char*)malloc(  longueur*sizeof(char));
-			retour->chemin=strcat(retour->chemin,ve.mypath);
-		}
-		else
-		{
-			if(arg[0]=='/')
-			{
-				retour->chemin=(char*)malloc( strlen(arg)*sizeof(char));
-				strcat(retour->chemin, arg);
-			}
-			else
-			{
-				int temD=0, temS=0;
-				char* modifPath=(char*) malloc(strlen(ve.mypath));
-				
-				while(arg[temS+1]=='/')//commence par un seul point
-				{
-					retour->chemin=(char*)malloc((strlen(ve.mypath)+strlen(arg)-2)*sizeof(char));
-					strcat(retour->chemin, ve.mypath);
-					strcat(retour->chemin, pt);//arg sans le "./"
-					//faire les ..
-					strchr(modifPath, '/');
-				
-				}
-				
-				while((((tem+2)<strlen(arg))&&(arg[tem]=='.')&&(arg[tem+1]=='.')&&(arg[tem+2]=='/'))
-					tem++;
-				for(i=0; i<tem; i++)
-				{
-					modifPath=strchr(modifPath, '/');
-				}
-				 
-				retou
-			
-			
-		}
-			
-		retour->nom=(char*)malloc(0*sizeof(char));//le nom est vide pour indiquer qu'on finit par un repertoire
-	}
-	else//ne se finit pas par un '/'
-	{
-		//comme ca ne finit pas par un '/', motActuel n a pas ete reinitialisé
-		if(arg[0]!='/')
-		{
-			int longueur=(strlen(chemin)+strlen(ve.mypath));
-			retour->chemin=(char*)malloc(  longueur*sizeof(char));
-			strcat(retour->chemin,ve.mypath);
-			strcat(retour->chemin, chemin);
-		}
-		else  
-		{
-			retour->chemin=(char*)malloc(strlen(chemin) *sizeof(char));
-			strcpy(retour->chemin, chemin);
-		}
-		retour->nom=(char*)malloc(strlen(motPrecedent)*sizeof(char));
-		strcpy(retour->nom, nom);
-	}
-	
-	printf("[monchemin.c] chemin=%s \t nom=%s\n", retour->chemin, retour->nom);
-
-	return retour;
-	
-}*/
 
 
 
