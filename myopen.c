@@ -13,8 +13,8 @@ int myopen(int indice)
 //	printf("%s \n",dpath);
 	strcat(dpath,nom);
 //	printf("%s \n",dpath);
-	int retour = open(dpath,O_RDWR );
-	tabInode[indice].etat = retour;
+	int retour = open(dpath,O_RDWR|O_CREAT|O_APPEND );
+	INODE[indice].etat = retour;
 	return retour; // renvoie  -1 si il ne trouve pas le fichier, sinon renvoie la valeur correspondant au descripteur de fichier
 }
 
