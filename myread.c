@@ -24,7 +24,7 @@ void myread(int ninode, char buf[] ,int nombre)
             printf("\n fichier ferme");
             int fd =0,i=0 ,lu=0; char * car = NULL;
             char *c =NULL;
-            fd = myopen(0);
+            fd = myopen(ninode);
             printf("fd = %d \n",fd);
             if((fd != 0)&&(fd !=-1))
             {
