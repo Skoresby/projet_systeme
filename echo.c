@@ -1,8 +1,10 @@
-#include "bash.h"
 #include "variable_environnement.h"
+#include "inode.h"
+#include "vg"
 
-Inode *tabInode;
-int nbInode;
+extern Inode *INODE;
+extern VE VAR_E;
+
 
 int main(int argc,char *argv[])
 {
