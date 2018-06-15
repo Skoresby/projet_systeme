@@ -90,9 +90,20 @@ Path path(char* arg, int provenance)//si provenance=0, on ne met rien dans chemi
 			strcpy(retour.nom, tmp.nom);
 			retour.chemin=NULL;
 		}
+		else if(provenance==3)//si chemin null, on renvoie le chemin courant (en rajoutant derriere ce qu'il y a avant le nom du fichier si besoin)
+		{
+			tmp=separer(arg);
+			retour.nom=(char*)malloc(strlen(tmp.nom)*sizeof(char));
+			strcpy(retour.nom, tmp.nom);
+
+			retour.chemin=(char*)malloc((strlen(VAR_E.mypath)+strlen(tmp.chemin))*sizeof(char));
+			strcpy(retour.chemin, VAR_E.mypath);
+			strcat(retour.chemin, tmp.chemin);
+		}
 		else
 		{
 			printf("erreur : il faut donner le chemin absolu ou relatif\n");
+			exit(EXIT_FAILURE);
 		}
 	}
 	
@@ -122,17 +133,7 @@ Path separer(char* arg)
 			countMotActuel=0;
 			memset (motActuel, 0, sizeof (motActuel));
 		}
-		else if(provenance==3)//si chemin null, on renvoie le chemin courant
-		{
-			tmp=separer(arg);
-		retour.nom=(char*)malloc(strlen(tmp.nom)*sizeof(char));
-		strcpy(retour.nom, tmp.nom);
-
-		retour.chemin=(char*)malloc((strlen(VAR_E.mypath)+strlen(tmp.chemin))*sizeof(char));
-		strcpy(retour.chemin, VAR_E.mypath);
-		strcat(retour.chemin, tmp.chemin);
-		printf("ch=%s, n=%s\n", retour.chemin, retour.nom);
-		}
+		
 	}
 	
 	
