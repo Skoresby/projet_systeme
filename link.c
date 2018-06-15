@@ -10,6 +10,7 @@
 #include "ln.h"
 #include "verifExistence.h"
 #include "verifType.h"
+#include "mycreate.h"
 
 
 extern Inode* INODE;
@@ -24,7 +25,7 @@ void link(Path nom1 ,Path nom2);
     strcpy(var,nom2.chemin);
     strcat(var,nom2.nom);
     int etat_fichier2 = 0;
-    etat_fichier2 = mycreate(var,3);
+    etat_fichier2 = mycreate(var,6);
     if(etat_fichier2>2)
     {
 
