@@ -1,7 +1,9 @@
 #include "path.h"
-#include "variable_environnement.h"
 #include "inode.h"
 #include "liste_chainee.h"
+#include "vg.h"
+#include "verifExistence.h"
+#include "unlink.h"
 
 extern Inode* INODE;
 extern char** tabBlocs;
