@@ -6,3 +6,5 @@
 #include "verifExistence.h"
 
 void cd(char *chemin);
+
+#endif
