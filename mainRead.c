@@ -1,0 +1,11 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include "myread.h"
+
+
+int main(int argc, char* argv [])
+{
+	myread(atoi(argv[1]),argv[2],atoi(argv[3]));
+	return 0;
+}
