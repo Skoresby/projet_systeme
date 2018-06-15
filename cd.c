@@ -1,5 +1,7 @@
 #include "cd.h"
 
+Extern VE;
+
 void cd (char *chemin)
 {
 	char *cheminFinal;
@@ -8,9 +10,9 @@ void cd (char *chemin)
 	printf("lenght %d \n", strlen(chemin));
 	if((chemin[0] == '.') && (chemin[1] == '.') && strlen(chemin))/*pour "cd .."*/
 	{
-		cheminFinal=(char*)malloc((strlen(Inode.chemin_absolu)-1)*sizeof(char));
-		cheminInt=(char*)malloc((strlen(Inode.chemin_absolu)-1)*sizeof(char));
-		memcpy ( cheminInt, Inode.chemin_absolu, strlen(Inode.chemin_absolu)-1);/*suppression du "/" en fin du chemin actuel*/
+		cheminFinal=(char*)malloc((strlen(VE.mypath)-1)*sizeof(char));
+		cheminInt=(char*)malloc((strlen(VE.mypath)-1)*sizeof(char));
+		memcpy ( cheminInt, VE.mypath, strlen(VE.mypath)-1);/*suppression du "/" en fin du chemin actuel*/
 		path = separer(cheminInt);/*aller au repertoire precedent*/
 		cheminFinal = path.chemin;
 	}
@@ -23,14 +25,16 @@ void cd (char *chemin)
 	else /*chemin est un chemin relatif par rapport aà inode.path*/
 	{
 		/*concatener inode.path et chemin*/
-		cheminFinal=(char*)malloc((strlen(Inode.chemin_absolu)+strlen(chemin))*sizeof(char));
-		strcpy(cheminFinal, Inode.chemin_absolu);
+		cheminFinal=(char*)malloc((strlen(VE.mypath)+strlen(chemin))*sizeof(char));
+		strcpy(cheminFinal, VE.mypath);
 		strcat(cheminFinal, chemin);
 	}
 	/*vérification de l'existance*/
-	if(verifExistence(cheminFinal) != -1)
+	memcpy ( cheminInt, cheminFinal, strlen(cheminFinal)-1);
+	path = separer(cheminInt);
+	if(verifExistence(path) != -1)
 	{
-		Inode.chemin_absolu = cheminFinal;
+		VE.mypath = cheminFinal;
 	}
 	else
 		printf("le chemin n'existe pas\n");
