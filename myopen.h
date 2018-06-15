@@ -11,3 +11,4 @@
 #include <unistd.h>
 
 int myopen(int);
+#endif
