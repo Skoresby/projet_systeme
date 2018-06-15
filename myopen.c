@@ -1,6 +1,7 @@
 #include "myopen.h"
 #include "variable_environnement.h"
 #include "inode.h"
+#include "vg.h"
 
 int myopen(int indice)
 {
