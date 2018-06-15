@@ -2,8 +2,9 @@
 #include "path.h"
 #include "myread.h"
 #include "verifExistence.h"
+#include "vg.h"
 
-
+extern Inode* INODE;
 
 
 void myrmdir(char * rep)
