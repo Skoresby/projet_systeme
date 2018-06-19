@@ -6,7 +6,7 @@ void myls (char *argv[])
 	int type = -1;
 	Path pathLs;
 	
-	if(argv[1] != NULL)/*ls avec une option*/
+	if(strlen(argv[1]) != 0)/*ls avec une option*/
 	{
 		if(argv[1][0] != '-') /*ls avec option*/
 		{
