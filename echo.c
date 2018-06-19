@@ -1,78 +1,68 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 #include "variable_environnement.h"
 #include "inode.h"
-#include "vg"
-#include "liste_chainee.h"
+#include "vg.h"
+#include "path.h"
+#include "verifExistence.h"
+#include "mycreate.h"
+#include "myopen.h"
+#include "mywrite.h"
+#include "myclose.h"
+
 extern Inode *INODE;
 extern VE VAR_E;
 
+void myecho(int etat, char *chaine);
 
 int main(int argc,char *argv[])
 {
-
-   Inode tabInode[3];
-        //char ntab[]="test.txt";
-    memcpy(tabInode[0].nom_fichier,argv[1],strlen(argv[1])+1);
-    //copie le nom du fichier pri en parametre dans tabInode[0]
-    tabInode[0].permissions=700;
-    char chemin[]="/UNIX/projet_unix/";
-    memcpy(tabInode[0].chemin_absolu,chemin,strlen(chemin)+1);
-    char date[]="2018-11-06";
-    memcpy(tabInode[0].d_last_mod,date,strlen(date)+1);
-    tabInode[0].version=1;
-    tabInode[0].type='f';
-    tabInode[0].bloc=2;
-    tabInode[0].taille=12;
-    char prop[]="kyndy";
-    memcpy(tabInode[0].n_pro,prop,strlen(prop)+1);
-    tabInode[0].etat=-1;
-    tabInode[0].nb_lien=1;
-        char tab[100]="";
+	//le premier argument est forcement le fichier
+   
+    char tab[100]="";
     int i;
 // on concaterne tout les arguments passé en paremetre à partir de
-//argv[2]( pour ne par recuperer le non du fichier)
-// et on stocque dans un tableau de chaine de caractere
-        for(i=2;i<argc;i++)
-        {
-                strcat(tab , argv[i]);
-                strcat(tab ," ");//espacer les mots de la chaine à redictionner dans
-la //fichier
+//argv[2]( pour ne pas recuperer le nom du fichier)
+// et on stock dans un tableau une dimension
+    for(i=2;i<argc;i++)
+    {
+		  strcat(tab , argv[i]);
+        strcat(tab ," ");//espacer les mots de la chaine à redictionner dans
+ //fichier
 
-        }
-        printf("%s \n",tab);
-        //char *v[21];
-        int k=0;
-//on parcourt le tableau d'Inode pour rechercher le fichier passe
-//en parametre
-        for(k=0;k<3;k++)
-        {
-                if(argv[1]=tabInode[k].nom_fichier)
-                {
-                        printf("le fichier est bien dans la table des inods \n");
-                     echo(argv[1],tab);
-                 }
-                 else
-                 {
-                         printf("le fichier est introuvable sur ce systeme \n");
-                 exit(EXIT_FAILURE);
-                 }
-         }
-        return 0;
+    }
+       
+	//on recupere le chemin du fichier
+	Path tmp=path(argv[1], 3);
+	
+    int ninode=verifExistence(tmp);
+    if(ninode==-1)//si le fichier n existe pas
+    {
+		if(mycreate(argv[1], 2)==-1)
+      {
+         printf("probleme lors de la creation du fichier\n");
+         exit(EXIT_FAILURE);
+      }
+		ninode=verifExistence(tmp);
+	}
+    int etat=1;//sortie standard
+    if(INODE[ninode].etat<0)//fichier non ouvert
+		etat=myopen(ninode);
+	
+	if(etat==-1)//erreur lors de l ouverture
+	{
+		printf("il y a eu une erreur lors de l'ouverture du fichier\n");
+		exit(EXIT_FAILURE);
+	}
+    myecho(etat, tab);
+    return 0;
 }
 
 
-void echo(char *fichier, char *chaine)
+void myecho(int etat, char *chaine)
 {
-        int fd;
-
-        //v[0]=argv[2];
-        //v[1]=argv[3];
-        //printf("le resulta est %s",strcat (v[1],v[0]));
-
-
-        //redirection de la sortie vers le fichier passé en paramètre
-        //dup2(fd ,1);
-        //printf("%s \n",chaine);
-        mywrite(0,chaine,sizeof(chaine));
-        close(fd);
+        mywrite(etat,chaine,sizeof(chaine));
+        myclose(etat);
         return ;
 }
