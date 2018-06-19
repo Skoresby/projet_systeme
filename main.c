@@ -88,6 +88,11 @@ int main()
 		printf("command %s\n",command);
 		system(command);
 	}
+	else if( strcmp(test[0],"open")==0){
+		printf("10.cmd system avec tableau\n");
+		printf("command %s\n",command);
+		system(command);
+	}
 	else
 		printf("La commande n'existe pas\n");
 
