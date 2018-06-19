@@ -22,10 +22,12 @@ int main()
 	system("gcc mainRead.c myread.c myopen.c myclose.c -o read");
 	system("gcc mainWrite.c mywrite.c myopen.c myclose.c liste_chainee.c -o write");
 	system("gcc mainCreate.c mycreate.c myopen.c myclose.c mywrite.c liste_chainee.c verifExistence.c path.c -o create");
-	system("gcc mainMkdir.c mkdir.c -o mkdir");
-	system("gcc mainPath.c path.c -o path");
-	system("gcc -Wall mainLn.c ln.c path.c verifExistence.c verifType.c -o ln ");
+	system("gcc mainMkdir.c mkdir.c mycreate.c -o mkdir");
+	//system("gcc mainPath.c path.c -o path");
+	system("gcc -Wall mainLn.c ln.c path.c verifExistence.c verifType.c link.c -o ln ");
 	system("gcc mainUnLink.c unlink.c path.c verifExistence.c liste_chainee.c -o unlink");
+	system("gcc mainLs ls.c -o ls");
+	system("gcc mainRmdir rmdir.c -o rmdir");
 
 	do
 	{
