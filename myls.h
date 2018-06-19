@@ -7,6 +7,6 @@
 #include "myread.h"
 
 void myls (char *argv[]);
-void affiche_ls(char *repertoire, bool option);
+void affiche_ls(char *repertoire, _Bool option);
 
 #endif
