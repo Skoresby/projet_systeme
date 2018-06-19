@@ -107,7 +107,7 @@ void affiche_ls(char *repertoire, _Bool option)
 			{
 				printf("%s\n", contenu);
 			}
-			contenu[30] = "";/*reinitialise contenu*/
+			memset(contenu, 0, strlen(contenu));/*reinitialise contenu*/
 			j = 0;
 		}
 	}
