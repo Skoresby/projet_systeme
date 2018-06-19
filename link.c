@@ -18,7 +18,7 @@ extern char** tabBlocs;
 extern L_Bloc * listeBloc;
 extern L_Bloc * listeInode;
 
-void link(Path nom1 ,Path nom2)
+void mylink(Path nom1 ,Path nom2)
 {
    
     char * var = (char*)malloc((strlen(nom2.chemin)+strlen(nom2.nom))*sizeof(char));
