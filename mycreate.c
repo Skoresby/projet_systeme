@@ -1,9 +1,17 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <time.h>
-#include "mycreate.h"
-#include "path.h"
+#include "verifExistence.h"
+#include "inode.h"
+#include "vg.h"
+#include "mywrite.h"
+#include "myopen.h"
+#include "variable_environnement.h"
+#include "myclose.h"
 #include "liste_chainee.h"
+#include "path.h"
+#include "mycreate.h"
+
 extern Inode *INODE;
 extern VE VAR_E;
 
