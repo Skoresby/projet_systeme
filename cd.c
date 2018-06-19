@@ -1,5 +1,8 @@
 #include "cd.h"
 #include "liste_chainee.h"
+#include "vg.h"
+#include "path.h"
+#include "verifExistence.h"
 extern VE VAR_E;
 
 void cd (char *chemin)
