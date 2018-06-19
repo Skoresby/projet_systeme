@@ -1,6 +1,6 @@
 #ifndef INODE_H
 #define INODE_H
-
+#include "liste_chainee.h"
 typedef struct 
 {
  int permissions;
