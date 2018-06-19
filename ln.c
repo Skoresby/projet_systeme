@@ -7,6 +7,7 @@
 #include "verifExistence.h"
 #include "verifType.h"
 #include "vg.h"
+#include "link.h"
 
 extern VE VAR_E;
 
