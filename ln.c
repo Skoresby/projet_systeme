@@ -42,7 +42,7 @@ void ln(char * argv[])
 			printf("on ne fait pas de lien symbolique, que des liens physiques. veuillez ne pas pointer sur un lien.\n");
 			exit(EXIT_FAILURE);
 		}
-		link(arg1, arg2);
+		mylink(arg1, arg2);
 		
 	}
 }
