@@ -79,8 +79,10 @@ int mycreate(char *fichier,int numMode)
 		INODE[VAR_E.nbNinode-1].nb_lien=1;
 	}
 	Path tmpPath;
+	tmpPath.chemin=(char*)malloc(strlen(VAR_E.mypath)*sizeof(char));
+	tmpPath.nom=NULL;
 	strcpy(tmpPath.chemin,VAR_E.mypath);
-	strcpy(tmpPath.nom,"");
+	//strcpy(tmpPath.nom,"");
 	int ninodePath=verifExistence(tmpPath);
 	mywrite(ninodePath, INODE[0].nom_fichier, sizeof(INODE[0].nom_fichier));//on écrit dans le fichier du répertoire le nom du fichier créé
 	return fd;
