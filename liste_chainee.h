@@ -1,6 +1,9 @@
 #ifndef LISTE_CHAINEE_H
 #define LISTE_CHAINEE_H
 
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 /*define verifType 0*/
 
 typedef struct t_Bloc 

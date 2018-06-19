@@ -1,7 +1,7 @@
 #include  "liste_chainee.h"
-#include <stdio.h>
+//#include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
+//#include <string.h>
 
 
 L_Bloc *initBloc(int x)
