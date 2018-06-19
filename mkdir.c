@@ -10,10 +10,10 @@
 extern Inode* INODE;
 extern VE VAR_E;
 
-int mkdir(char argv[])
+int mymkdir(char argv[])
 {
 	
-	int i = mycreate(argv[1],2);
+	int i = mycreate(argv,2);
 	
 	return i;
 
