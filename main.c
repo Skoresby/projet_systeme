@@ -9,29 +9,27 @@ Inode* INODE;
 
 int main()
 {
+	//char** parametre;
 	char recup[100];
 	char* recup2;
 	char command[100];
-	char** test;
+	char **test;
 	char * rep;
-	char *p;
-	int i;
-	
+	int i=0;
+	char*p=NULL;
+
 	do
 	{
+		i=0;
 		printf("%s$ ", VAR_E.mypath);
 		fgets(recup, sizeof(recup),stdin);
-		
-		recup2=(char*)malloc((strlen(recup)-1)*sizeof(char));
+
+		recup2=(char*)malloc(strlen(recup)*sizeof(char));
 		strncat(recup2, recup, strlen(recup)-1);//on enleve le retour a la ligne
-
+		
 		test=(char**)malloc(100*sizeof(char*));//tableau contenant les reponses de l utilisateur selon les espaces ("ls -l" enregistre "ls" et "-l" )
-
+		
 		p = strtok(recup2, " ");//p est un pointeur sur la chaine contenant l argument i
-		
-		strcpy(command, "./" );
-		strcat(command, recup2 );
-		
 		while(p != NULL)
 		{
 		  
@@ -46,7 +44,11 @@ int main()
 			
 			p = strtok(NULL, " ");//on continue de séparer en pointant sur NULL, le dernier caractere enregistre de la chaine deja separee
 		}
+
+		strcpy(command, "./" );
+		strcat(command, recup2 );
 		
+
 		if( strcmp(test[0],"touch")==0){
 			printf("1.cmd system avec tableau\n");
 			printf("command %s\n",command);
@@ -61,7 +63,7 @@ int main()
 			 printf("3.cmd system avec tableau\n");
 			 printf("command %s\n",command);
 			system(command);
-		}	
+		}
 		else if( strcmp(test[0],"echo")==0){
 			 printf("4.cmd system avec tableau\n");
 			 printf("command %s\n",command);
@@ -94,9 +96,10 @@ int main()
 		}
 		else if( strcmp(test[0],"exit")==0)
 			printf("vous quittez le terminal.\n");
+		
 		else
 			printf("La commande n'existe pas\n");
-	
+		
 		//maj_fichier();
 		
 		//on libere l espace alloue
@@ -116,7 +119,6 @@ int main()
 	
 	return 0;
 }
-
 /*
 //~ void maj_fichier()
 	//~ {
