@@ -27,7 +27,7 @@ void mywrite(int ninode,char buf[], int nombre)
         {
             
             char buff[1000]="";int i=0;
-            int sbuf=sizeof(buf),T_MAX=5120;// 5120 = 5*1024 5 blocs de 1024 octets au maximum pour chaque fichier
+            int sbuf=strlen(buf),T_MAX=5120;// 5120 = 5*1024 5 blocs de 1024 octets au maximum pour chaque fichier
             int espace_restant=((int)sizeof(INODE[ninode].lbloc)*1024)-INODE[ninode].taille;
             for(i=0;i<nombre;i++)
             {
