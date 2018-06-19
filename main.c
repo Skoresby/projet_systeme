@@ -9,77 +9,110 @@ Inode* INODE;
 
 int main()
 {
-	char** parametre;
 	char recup[100];
 	char* recup2;
 	char command[100];
-	char* test;
+	char** test;
+	char * rep;
+	char *p;
+	int i;
 	
-	printf("%s$ ", VAR_E.mypath);
-	fgets(recup, sizeof(recup),stdin);
-	recup2=(char*)malloc(strlen(recup)*sizeof(char));
+	do
+	{
+		printf("%s$ ", VAR_E.mypath);
+		fgets(recup, sizeof(recup),stdin);
+		
+		recup2=(char*)malloc((strlen(recup)-1)*sizeof(char));
+		strncat(recup2, recup, strlen(recup)-1);//on enleve le retour a la ligne
 
-	strcat(recup2, recup);
-	test = strtok(recup," ");
-	
-	strcpy(command, "./" );
-	strcat(command, recup2 );
-	
-	if( strcmp(test,"touch")==0){
-		printf("1.cmd system avec tableau\n");
-		printf("command %s\n",command);
-		system(command);
-	}
-	else if( strcmp(test,"ls")==0){
-		printf("2.cmd system avec tableau\n");
-		printf("command %s\n",command);
-		system(command);
-	}
-	else if( strcmp(test,"cat")==0){
-		 printf("3.cmd system avec tableau\n");
-		 printf("command %s\n",command);
-		system(command);
-	}
-	else if( strcmp(test,"echo")==0){
-		 printf("4.cmd system avec tableau\n");
-		 printf("command %s\n",command);
+		test=(char**)malloc(100*sizeof(char*));//tableau contenant les reponses de l utilisateur selon les espaces ("ls -l" enregistre "ls" et "-l" )
+
+		p = strtok(recup2, " ");//p est un pointeur sur la chaine contenant l argument i
+		
+		strcpy(command, "./" );
+		strcat(command, recup2 );
+		
+		while(p != NULL)
+		{
+		  
+			if(i < 100)
+			{
+				test[i] = malloc(sizeof(char) * (1+strlen(p)));
+				strcpy(test[i], p);
+				i++;
+			}
+			else
+				break;
+			
+			p = strtok(NULL, " ");//on continue de séparer en pointant sur NULL, le dernier caractere enregistre de la chaine deja separee
+		}
+		
+		if( strcmp(test[0],"touch")==0){
+			printf("1.cmd system avec tableau\n");
+			printf("command %s\n",command);
 			system(command);
-	}
-	else if( strcmp(test,"ls")==0){
-		printf("5.cmd system avec tableau\n");
-		printf("command %s\n",command);
-		system(command);
-	}
-	else if( strcmp(test,"mkdir")==0){
-		printf("6.cmd system avec tableau\n");
-		printf("command %s\n",command);
-		system(command);
-	}
-	else if( strcmp(test,"mv")==0){
-		printf("7.cmd system avec tableau\n");
-		printf("command %s\n",command);
-		system(command);
-	}
-	else if( strcmp(test,"df")==0){
-		printf("8.cmd system avec tableau\n");
-		printf("command %s\n",command);
-		system(command);
-	}
-	else if( strcmp(test,"rm")==0){
-		printf("9.cmd system avec tableau\n");
-		printf("command %s\n",command);
-		system(command);
-	}
-	else if( strcmp(test,"cd")==0){
-		printf("10.cmd system avec tableau\n");
-		printf("command %s\n",command);
-		system(command);
-	}
-	else
-		printf("La commande n'existe pas\n");
+		}
+		else if( strcmp(test[0],"ls")==0){
+			printf("2.cmd system avec tableau\n");
+			printf("command %s\n",command);
+			system(command);
+		}
+		else if( strcmp(test[0],"cat")==0){
+			 printf("3.cmd system avec tableau\n");
+			 printf("command %s\n",command);
+			system(command);
+		}	
+		else if( strcmp(test[0],"echo")==0){
+			 printf("4.cmd system avec tableau\n");
+			 printf("command %s\n",command);
+				system(command);
+		}
+		else if( strcmp(test[0],"mkdir")==0){
+			printf("5.cmd system avec tableau\n");
+			printf("command %s\n",command);
+			system(command);
+		}
+		else if( strcmp(test[0],"mv")==0){
+			printf("6.cmd system avec tableau\n");
+			printf("command %s\n",command);
+			system(command);
+		}
+		else if( strcmp(test[0],"df")==0){
+			printf("7.cmd system avec tableau\n");
+			printf("command %s\n",command);
+			system(command);
+		}
+		else if( strcmp(test[0],"rm")==0){
+			printf("8.cmd system avec tableau\n");
+			printf("command %s\n",command);
+			system(command);
+		}
+		else if( strcmp(test[0],"cd")==0){
+			printf("9.cmd system avec tableau\n");
+			printf("command %s\n",command);
+			system(command);
+		}
+		else if( strcmp(test[0],"exit")==0)
+			printf("vous quittez le terminal.\n");
+		else
+			printf("La commande n'existe pas\n");
 	
-	//maj_fichier();
+		//maj_fichier();
+		
+		//on libere l espace alloue
+		rep=(char*)malloc(strlen(test[0])*sizeof(char));
+		strcat(rep, test[0]);
+		for(i=0; i<100; i++)
+		{
+			free(test[i]);
+		}
+		free(test);
+		free(p);
+		free(recup2);
+		
+	}while(strcmp(rep,"exit")!=0);
 	
+	free(rep);
 	
 	return 0;
 }
