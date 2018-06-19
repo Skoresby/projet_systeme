@@ -61,7 +61,7 @@ void myls (char *argv[])
 	}
 	else /*ls simple*/
 	{
-		affiche_ls(VE.mypath,0);
+		affiche_ls(VAR_E.mypath,0);
 	}	
 }
 
@@ -70,13 +70,16 @@ void affiche_ls(char *repertoire, _Bool option)
 	char buffer[100] = "";
 	char contenu[30] = "";
 	int ninode, i, j = 0;
+	char *permission = "rw-";
+	Path pathLs;
+	
 	pathLs = path(repertoire, 1);
 	ninode = verifExistence(pathLs);
 	
 	myread(ninode,buffer,INODE[ninode].taille);
 	for(i=0;i<100;i++)
 	{
-		if(buffer[i] != ' ');
+		if(buffer[i] != ' ')
 		{
 			contenu[j] = buffer[i];
 		}
@@ -84,7 +87,21 @@ void affiche_ls(char *repertoire, _Bool option)
 		{
 			if(option == 1)
 			{
-				printf("%s %s\n", INODE[ninode].permissions , contenu);
+				if(INODE[ninode].permissions == 0000)/*aucun droit*/
+				{
+					permission[0] = '-';
+					permission[1] = '-';
+				}
+				else if(INODE[ninode].permissions == 0100)/*lecture uniquement*/
+				{
+					permission[1] = '-';
+				}
+				else if(INODE[ninode].permissions == 0200)/*écriture uniquement*/
+				{
+					permission[0] = '-';
+				}
+				
+				printf("%s %s\n", permission, contenu);
 			}
 			else
 			{
