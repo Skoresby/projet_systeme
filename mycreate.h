@@ -9,6 +9,7 @@
 #include "variable_environnement.h"
 #include "myclose.h"
 #include "liste_chainee.h"
+#include "path.h"
 
 int mycreate(char *fichier,int mode);
 
