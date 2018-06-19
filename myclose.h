@@ -1,5 +1,5 @@
-#ifndef MY_OPEN
-#define MY_OPEN
+#ifndef MY_CLOSE
+#define MY_CLOSE
 
 #include<stdio.h>
 #include<stdlib.h>
