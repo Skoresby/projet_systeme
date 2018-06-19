@@ -26,8 +26,8 @@ int main()
 	//system("gcc mainPath.c path.c -o path");
 	system("gcc -Wall mainLn.c ln.c path.c verifExistence.c verifType.c link.c -o ln ");
 	system("gcc mainUnLink.c unlink.c path.c verifExistence.c liste_chainee.c -o unlink");
-	system("gcc mainLs ls.c -o ls");
-	system("gcc mainRmdir rmdir.c -o rmdir");
+	system("gcc mainLs ls.c verifExistence.c verifType.c myread.c -o ls");
+	system("gcc mainRmdir rmdir.c unlink.c-o rmdir");
 
 	do
 	{
