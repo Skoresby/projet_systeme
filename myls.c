@@ -1,5 +1,4 @@
 #include "myls.h"
-#include "liste_chainee.h"
 
 void myls (char *argv[])
 {
@@ -18,7 +17,7 @@ void myls (char *argv[])
 						printf("ls -l\n");
 						if(argv[2] == NULL)/*ls -l seul*/
 						{
-							affiche_ls(Inode.chemin_absolu,1);
+							affiche_ls(argv[2],1);
 						}
 						else if(argv[2][0] != '-') /*ls avec plusieurs options*/
 						{
@@ -62,7 +61,7 @@ void myls (char *argv[])
 	}
 	else /*ls simple*/
 	{
-		affiche_ls(Inode.chemin_absolu);
+		affiche_ls(VE.mypath,0);
 	}	
 }
 
@@ -96,3 +95,4 @@ void affiche_ls(char *repertoire, bool option)
 		}
 	}
 }
+
