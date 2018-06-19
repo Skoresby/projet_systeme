@@ -8,9 +8,11 @@ extern Inode *INODE;
 extern VE VAR_E;
 
 
-int mycreate(char *fichier,mode_t mode)
+int mycreate(char *fichier,int numMode)
 {
 	int fd =-1, ninode;
+	mode_t mode;
+	mode = (mode_t)numMode;
 	Path recup =path(fichier,3);
 	
 	ninode=verifExistence(recup);

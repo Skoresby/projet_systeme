@@ -10,6 +10,6 @@
 #include "myclose.h"
 #include "liste_chainee.h"
 
-int mycreate(char *fichier,mode_t mode);
+int mycreate(char *fichier,int mode);
 
 #endif
