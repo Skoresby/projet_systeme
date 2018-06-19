@@ -64,9 +64,9 @@ Path path(char* arg, int provenance)//si provenance=0, on ne met rien dans chemi
 		chaine=(char*)malloc((strlen(ptArg)+strlen(doublePath))*sizeof(char));
 		strcpy(chaine, doublePath);
 		strcat(chaine, ptArg);
-		printf("93 : chaine obtenue : %s\n", chaine);
+		/*printf("93 : chaine obtenue : %s\n", chaine);*/
 		tmp=separer(chaine);//la separation reelle
-		printf("95 donc nous avons donc dit nom=%s, chemin=%s\n", tmp.nom, tmp.chemin);
+		/*printf("95 donc nous avons donc dit nom=%s, chemin=%s\n", tmp.nom, tmp.chemin);*/
 		if(arg[strlen(arg)-1]=='/')//finit par un '/', donc c est un repertoire
 		{
 			retour.chemin=(char*)malloc(strlen(chaine)*sizeof(char));
