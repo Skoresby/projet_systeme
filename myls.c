@@ -13,7 +13,7 @@ void myls (char *argv[])
 			/*différentes options (même s'il n'y a actuellement que -l de diponible)*/
 			switch (argv[1][1])
 			{
-				case l : /*ls -l*/
+				case 'l' : /*ls -l*/
 						printf("ls -l\n");
 						if(argv[2] == NULL)/*ls -l seul*/
 						{
@@ -38,7 +38,7 @@ void myls (char *argv[])
 							}
 						}
 						break;
-				default
+				default :
 					printf("option non gérée\n");
 					break;
 			}
@@ -65,7 +65,7 @@ void myls (char *argv[])
 	}	
 }
 
-void affiche_ls(char *repertoire, _Bool option)
+void affiche_ls(char *repertoire, bool option)
 {
 	char buffer[100] = "";
 	char contenu[30] = "";
