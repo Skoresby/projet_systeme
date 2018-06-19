@@ -1,5 +1,6 @@
 #ifndef PATH_H
 #define PATH_H
+#include <string.h>
 
 typedef struct 
 {
