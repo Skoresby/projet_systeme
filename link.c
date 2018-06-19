@@ -11,6 +11,7 @@
 #include "verifExistence.h"
 #include "verifType.h"
 #include "mycreate.h"
+#include "link.h"
 
 
 extern Inode* INODE;
