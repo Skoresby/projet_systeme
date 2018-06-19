@@ -1,4 +1,10 @@
 #include "myls.h"
+#include "vg.h"
+#include "verifExistence.h"
+#include "verifType.h"
+#include "myread.h"
+#include "path.h"
+#include "liste_chainee.h"
 
 void myls (char *argv[])
 {
