@@ -17,6 +17,7 @@ int main()
 	
 	printf("%s$ ", VAR_E.mypath);
 	fgets(recup, sizeof(recup),stdin);
+	recup2=(char*)malloc(strlen(recup)*sizeof(char));
 
 	strcat(recup2, recup);
 	test = strtok(recup," ");
