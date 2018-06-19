@@ -2,7 +2,7 @@
 #define LINK_H
 
 
-#include <stdio.h>
+/*#include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
 #include <string.h>
@@ -13,10 +13,10 @@
 #include "vg.h"
 #include "ln.h"
 #include "verifExistence.h"
-#include "verifType.h"
+#include "verifType.h"*/
 
 
-void link(Path nom1 ,Path nom2);
+void mylink(Path nom1 ,Path nom2);
 
 
 #endif
