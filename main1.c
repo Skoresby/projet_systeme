@@ -27,7 +27,7 @@ int main()
 	system("gcc mainLn.c ln.c path.c verifExistence.c verifType.c myopen.c myclose.c mywrite.c link.c mycreate.c liste_chainee.c -o ln ");
 	system("gcc mainUnLink.c unlink.c path.c verifExistence.c liste_chainee.c -o unlink");
 	system("gcc mainLs.c myls.c verifExistence.c verifType.c myread.c myopen.c myclose.c path.c -o ls");
-	system("gcc mainRmdir.c rmdir.c unlink.c path.c verifExistence.c myread.c -o rmdir");
+	system("gcc mainRmdir.c rmdir.c liste_chainee.c unlink.c path.c verifExistence.c myread.c -o rmdir");
 
 	do
 	{
