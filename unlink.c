@@ -11,7 +11,7 @@ extern char** tabBlocs;
 extern L_Bloc * listeBloc;
 extern L_Bloc * listeInode;
 
-void unlink(char *nom)
+void myunlink(char *nom)
 {
 	
 	Path monPath;
