@@ -1,6 +1,6 @@
 #ifndef UNLINK_H
 #define UNLINK_H
 
-void unlink(char *nom);
+void myunlink(char *nom);
 
 #endif
