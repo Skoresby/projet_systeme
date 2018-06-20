@@ -22,11 +22,11 @@ int main()
 	system("gcc mainOpen.c myopen.c -o open");
 	system("gcc mainRead.c myread.c myopen.c myclose.c -o read");
 	system("gcc mainWrite.c mywrite.c myopen.c myclose.c liste_chainee.c -o write");
-	system("gcc mainCreate.c mycreate.c myopen.c myclose.c mywrite.c liste_chainee.c verifExistence.c path.c -o create -lpath.h");
-	system("gcc mainMkdir.c mkdir.c mycreate.c -o mkdir");
-	system("gcc -Wall mainLn.c ln.c path.c verifExistence.c verifType.c link.c mycreate.c -o ln ");
+	system("gcc mainCreate.c mycreate.c myopen.c myclose.c mywrite.c liste_chainee.c verifExistence.c path.c -o create");
+	system("gcc mainMkdir.c mkdir.c path.c myopen.c myclose.c mywrite.c liste_chainee.c verifExistence.c mycreate.c -o mkdir");
+	system("gcc mainLn.c ln.c path.c verifExistence.c verifType.c myopen.c myclose.c mywrite.c link.c mycreate.c liste_chainee.c -o ln ");
 	system("gcc mainUnLink.c unlink.c path.c verifExistence.c liste_chainee.c -o unlink");
-	system("gcc mainLs.c myls.c verifExistence.c verifType.c myread.c path.c -o ls");
+	system("gcc mainLs.c myls.c verifExistence.c verifType.c myread.c myopen.c myclose.c path.c -o ls");
 	system("gcc mainRmdir.c rmdir.c unlink.c path.c verifExistence.c myread.c -o rmdir");
 
 	do
